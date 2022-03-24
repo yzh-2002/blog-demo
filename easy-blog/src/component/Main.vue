@@ -16,31 +16,21 @@
 </template>
 
 <script>
+import {GetArticleList} from "@/http/api.js"
 export default {
     name:"Main",
     data(){
         return {
             // 假数据
-            articleList:[
-                {
-                    title:"Test A",
-                    author:"yzh",
-                    brief:"AAAAAAAAAAAAAAAAAAAA"
-                },
-                {
-                    title:"Test B",
-                    author:"yzh",
-                    brief:"BBBBBBBBBBBBBBBBBBBB"
-                },
-                {
-                    title:"Test B",
-                    author:"yzh",
-                    brief:"BBBBBBBBBBBBBBBBBBBB"
-                }
-            ]
+            articleList:[]
         }
+    },
+    created(){
+        // 获取文章列表
+        GetArticleList().then(data=>{
+            this.articleList =data
+        })
     }
-
 }
 </script>
 
