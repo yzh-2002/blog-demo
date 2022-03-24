@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import {GetArticleList} from "@/http/api.js"
+import requests from "@/http/request.js"
 export default {
     name:"Main",
     data(){
@@ -27,8 +27,8 @@ export default {
     },
     created(){
         // 获取文章列表
-        GetArticleList().then(data=>{
-            this.articleList =data
+        requests.get("/api/blog/list").then(data=>{
+            articleList =data
         })
     }
 }

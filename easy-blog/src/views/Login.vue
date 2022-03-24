@@ -11,35 +11,7 @@
           <div class="input-field">
             <input type="password" placeholder="Password" class="pswInput" />
           </div>
-          <button class="btn">登录</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="chat-container" style="display: none">
-      <div class="left">
-        <div class="self">
-          <h1>耶稣</h1>
-        </div>
-        <div class="member">
-          <ul>
-            <li>扶远</li>
-            <li>宸墨</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="chatroom">
-        <div class="chatbox"></div>
-        <div class="message">
-          <div class="text">
-            <div class="textbox">
-              <input type="text" class="chatInput" />
-            </div>
-          </div>
-          <div class="send">
-            <div class="sendbox">发送</div>
-          </div>
+          <button class="btn" @click="Login">登录</button>
         </div>
       </div>
     </div>
@@ -47,10 +19,25 @@
 </template>
 
 <script>
+import requests from "@/http/request.js"
 export default {
   name: "Login",
-  data() {},
-  methods: {},
+  data() {
+    return {
+      username:"",
+      password:""
+    }
+  },
+  methods: {
+    Login(){
+      requests.post("/api/user/login",{
+        "username":this.username,
+        "password":this.password
+      }).then(data=>{
+        console.log(data);
+      })
+    }
+  },
 };
 </script>
 
