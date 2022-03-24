@@ -15,34 +15,6 @@
         </div>
       </div>
     </div>
-
-    <div class="chat-container" style="display: none">
-      <div class="left">
-        <div class="self">
-          <h1>耶稣</h1>
-        </div>
-        <div class="member">
-          <ul>
-            <li>扶远</li>
-            <li>宸墨</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="chatroom">
-        <div class="chatbox"></div>
-        <div class="message">
-          <div class="text">
-            <div class="textbox">
-              <input type="text" class="chatInput" />
-            </div>
-          </div>
-          <div class="send">
-            <div class="sendbox">发送</div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -115,25 +87,9 @@ input {
   font-size: 1.1rem;
   color: #333;
 }
-.input-field input::-webkit-input-placeholder {
-  color: #aaa;
-  font-weight: 500;
-}
-.input-field input::-moz-placeholder {
-  color: #aaa;
-  font-weight: 500;
-}
-.input-field input:-ms-input-placeholder {
-  color: #aaa;
-  font-weight: 500;
-}
-.input-field input::-ms-input-placeholder {
-  color: #aaa;
-  font-weight: 500;
-}
 .input-field input::placeholder {
   color: #aaa;
-  font-weight: 500;
+  font-weight: 400;
 }
 .btn {
   width: 150px;
@@ -151,31 +107,5 @@ input {
 }
 .btn:hover {
   background-color: #4d84e2;
-}
-.social-text {
-  padding: 0.7rem 0;
-  font-size: 1rem;
-}
-.social-media {
-  display: flex;
-  justify-content: center;
-}
-.social-icon {
-  width: 46px;
-  height: 46px;
-  border: 1px solid #333;
-  margin: 0 0.45rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  color: #333;
-  font-size: 1.1rem;
-  border-radius: 23px;
-  transition: 0.3s;
-}
-.social-icon:hover {
-  color: #4481eb;
-  border-color: #4481eb;
 }
 </style>
