@@ -19,6 +19,30 @@ redis-server //打开redis
 npm run dev //运行在http://localhost:8000
 ```
 
+### nginx反向代理配置
+
+> 详情配置过程不再赘述
+
+配置信息：
+
+```
+ server {
+        listen       8001;
+        server_name  localhost;
+
+	location / {
+proxy_pass http://localhost:8080;
+	}
+
+	location /api/ {
+proxy_pass http://localhost:8000;
+proxy_set_header Host $host;
+	}
+	.......
+```
+
+客户端运行端口：8080，后端接口运行端口：8000，nginx代理端口：8001
+
 ### 接口信息
 
 （建议用postman测试一下）（稍后补充.....）
