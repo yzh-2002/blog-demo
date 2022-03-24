@@ -7,3 +7,5 @@ GET -- /api/blog/result -- PostmanRuntime/7.29.0 -- 1648115203091
 GET -- /api/blog/detail?id=1 -- PostmanRuntime/7.29.0 -- 1648115215968
 GET -- /api/blog/detail -- PostmanRuntime/7.29.0 -- 1648115224109
 GET -- /api/blog/detail?id=1 -- PostmanRuntime/7.29.0 -- 1648115257239
+GET -- /api/blog/list -- Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.82 Safari/537.36 -- 1648123922838
+GET -- /api/blog/list -- Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.82 Safari/537.36 -- 1648123965434
