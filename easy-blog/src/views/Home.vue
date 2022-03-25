@@ -1,26 +1,24 @@
 <template>
   <div class="home">
-      <Header />
-      <Main />
+    <Header />
+    <Main />
   </div>
 </template>
 
 <script>
-import Header from "@/component/Header.vue"
-import Main from "@/component/Main.vue"
+import Header from "@/component/Header.vue";
+import Main from "@/component/Main.vue";
 export default {
-    name:"Home",
-    components:{
-        Header,
-        Main
-    }
-
-}
+  name: "Home",
+  components: {
+    Header,
+    Main,
+  },
+};
 </script>
 
 <style>
-.home{
-    height: 100%;
+.home {
+  height: 100%;
 }
-
 </style>
