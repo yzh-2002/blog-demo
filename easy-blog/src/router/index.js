@@ -9,7 +9,7 @@ const routes = [
     redirect:"/login"
   },
   {
-    path:"/home",
+    path:"/home/:keyword?",
     name:"Home",
     component:()=>import("../views/Home.vue")
   },
@@ -19,7 +19,8 @@ const routes = [
     component: () => import("../views/Login.vue"),
   },
   {
-    path: "/detail",
+    // 动态路由配置
+    path: "/detail/:id",
     name: "Detail",
     component: () => import("../views/Detail.vue"),
   },

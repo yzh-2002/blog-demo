@@ -3,28 +3,46 @@
     <Header />
     <div class="container">
       <div class="head">
-        <div class="title">前端学习</div>
+        <div class="title">{{article.title}}</div>
         <div class="info">
-          <p>作者: zyz</p>
-          <p>2020-03-24</p>
+          <p>作者:{{article.author}}</p>
+          <p>{{article.createtime}}</p>
         </div>
       </div>
-      <div class="article"></div>
+      <div class="article">{{article.content}}</div>
     </div>
   </div>
 </template>
 
 <script>
 import Header from "../component/Header.vue";
+import requests from "@/http/request.js"
 export default {
   name: "Detail",
   data() {
-    return {};
+    return {
+      article:{
+        title:"",
+        content:"",
+        author:"",
+        createtime:""
+      }
+    };
   },
   methods: {},
   components: {
     Header,
   },
+  // 获取文章信息
+  created(){
+    const id =this.$route.params.id;
+    requests.get(`/api/blog/detail?id=${id}`).then(res=>{
+      this.article.title =res.data.title,
+      this.article.content =res.data.content,
+      this.article.author =res.data.author,
+      this.article.createtime =new Date(res.data.createtime).Format("yyyy-MM-dd")
+    })
+  }
 };
 </script>
 

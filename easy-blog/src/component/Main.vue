@@ -5,7 +5,7 @@
     </div>
     <div class="article-list">
       <template v-for="article in articleList">
-        <div class="article" :key="article.title" @click="clickArticle">
+        <div class="article" :key="article.title" @click="clickArticle(article.id)">
           <div class="leftimg">
             <img
               src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/img/random/11.webp"
@@ -28,39 +28,33 @@ export default {
   name: "Main",
   data() {
     return {
-      // 假数据
-      articleList: [
-        {
-          title: "MPLS学习",
-          author: "yzh2002",
-          content:
-            "MPLS它的诞生：一开始IP转发依靠第三层封装的目的地址，依照最长匹配原则查询路由表的方式进行转发决策但是由于速度较慢，并且一旦遇到路由递归的情况就会拖延转发速度，很长一段时间成为制约网络速度的因素。这时MPLS就随之诞生，它的思想是在L2和L3之间插入一层MPLS标签，使得转发基于标签值而不是目的IP地址来进行转发但是值得注意的是：随着技术的进步，FIB快速转发的实现，ASIC芯片等硬件的提升，MPLS在路由查找速度上的优势也在不断削弱，但是这种架构思想却十分重要，并且其支持多层标签和转发平面面向连接的特性仍然有很多应用。MPLS相关术语LSR（Label Switch Router）：标签路由交换器，即支持MPLS的路由器，该类路由器可以根据MPLS标签头部对数据包进MPLS它的诞生：一开始IP转发依靠第三层封装的目的地址，依照最长匹配原则查询路由表的方式进行转发决策但是由于速度较慢，并且一旦遇到路由递归的情况就会拖延转发速度，很长一段时间成为制约网络速度的因素。这时MPLS就随之诞生，它的思想是在L2和L3之间插入一层MPLS标签，使得转发基于标签值而不是目的IP地址来进行转发但是值得注意的是：随着技术的进步，FIB快速转发的实现，ASIC芯片等硬件的提升，MPLS在路由查找速度上的优势也在不断削弱，但是这种架构思想却十分重要，并且其支持多层标签和转发平面面向连接的特性仍然有很多应用。MPLS相关术语LSR（Label Switch Router）：标签路由交换器，即支持MPLS的路由器，该类路由器可以根据MPLS标签头部对数据包进行转发MPLS域：即由一系列连续的LSR构成的一个MPLS域LER（Label Edge Router）：位于MPLS域边缘，连接其他网络的LSRLSP（Label Switch Path）:标签",
-        },
-        {
-          title: "MPLS学习",
-          author: "yzh2002",
-          content:
-            "MPLS它的诞生：一开始IP转发依靠第三层封装的目的地址，依照最长匹配原则查询路由表的方式进行转发决策但是由于速度较慢，并且一旦遇到路由递归的情况就会拖延转发速度，很长一段时间成为制约网络速度的因素。这时MPLS就随之诞生，它的思想是在L2和L3之间插入一层MPLS标签，使得转发基于标签值而不是目的IP地址来进行转发但是值得注意的是：随着技术的进步，FIB快速转发的实现，ASIC芯片等硬件的提升，MPLS在路由查找速度上的优势也在不断削弱，但是这种架构思想却十分重要，并且其支持多层标签和转发平面面向连接的特性仍然有很多应用。MPLS相关术语LSR（Label Switch Router）：标签路由交换器，即支持MPLS的路由器，该类路由器可以根据MPLS标签头部对数据包进MPLS它的诞生：一开始IP转发依靠第三层封装的目的地址，依照最长匹配原则查询路由表的方式进行转发决策但是由于速度较慢，并且一旦遇到路由递归的情况就会拖延转发速度，很长一段时间成为制约网络速度的因素。这时MPLS就随之诞生，它的思想是在L2和L3之间插入一层MPLS标签，使得转发基于标签值而不是目的IP地址来进行转发但是值得注意的是：随着技术的进步，FIB快速转发的实现，ASIC芯片等硬件的提升，MPLS在路由查找速度上的优势也在不断削弱，但是这种架构思想却十分重要，并且其支持多层标签和转发平面面向连接的特性仍然有很多应用。MPLS相关术语LSR（Label Switch Router）：标签路由交换器，即支持MPLS的路由器，该类路由器可以根据MPLS标签头部对数据包进行转发MPLS域：即由一系列连续的LSR构成的一个MPLS域LER（Label Edge Router）：位于MPLS域边缘，连接其他网络的LSRLSP（Label Switch Path）:标签",
-        },
-        {
-          title: "MPLS学习",
-          author: "yzh2002",
-          content:
-            "MPLS它的诞生：一开始IP转发依靠第三层封装的目的地址，依照最长匹配原则查询路由表的方式进行转发决策但是由于速度较慢，并且一旦遇到路由递归的情况就会拖延转发速度，很长一段时间成为制约网络速度的因素。这时MPLS就随之诞生，它的思想是在L2和L3之间插入一层MPLS标签，使得转发基于标签值而不是目的IP地址来进行转发但是值得注意的是：随着技术的进步，FIB快速转发的实现，ASIC芯片等硬件的提升，MPLS在路由查找速度上的优势也在不断削弱，但是这种架构思想却十分重要，并且其支持多层标签和转发平面面向连接的特性仍然有很多应用。MPLS相关术语LSR（Label Switch Router）：标签路由交换器，即支持MPLS的路由器，该类路由器可以根据MPLS标签头部对数据包进MPLS它的诞生：一开始IP转发依靠第三层封装的目的地址，依照最长匹配原则查询路由表的方式进行转发决策但是由于速度较慢，并且一旦遇到路由递归的情况就会拖延转发速度，很长一段时间成为制约网络速度的因素。这时MPLS就随之诞生，它的思想是在L2和L3之间插入一层MPLS标签，使得转发基于标签值而不是目的IP地址来进行转发但是值得注意的是：随着技术的进步，FIB快速转发的实现，ASIC芯片等硬件的提升，MPLS在路由查找速度上的优势也在不断削弱，但是这种架构思想却十分重要，并且其支持多层标签和转发平面面向连接的特性仍然有很多应用。MPLS相关术语LSR（Label Switch Router）：标签路由交换器，即支持MPLS的路由器，该类路由器可以根据MPLS标签头部对数据包进行转发MPLS域：即由一系列连续的LSR构成的一个MPLS域LER（Label Edge Router）：位于MPLS域边缘，连接其他网络的LSRLSP（Label Switch Path）:标签",
-        },
-      ],
+      // 文章列表
+      articleList: [],
     };
   },
   methods: {
-    clickArticle() {
-      this.$router.push({ path: "/detail" });
+    clickArticle(id) {
+      this.$router.push({ path: `/detail/${id}` });
     },
   },
+  watch:{
+    $route(to,from){
+      const keyword =to.params.keyword;
+      if (keyword){
+        requests.get(`/api/blog/list?keyword=${keyword}`).then(res=>{
+            this.articleList =res.data;
+      })
+      }else{
+        requests.get(`/api/blog/list`).then(res=>{
+            this.articleList =res.data;
+      })
+      }
+    }
+  },
   created() {
-    // 获取文章列表
-    // requests.get("/api/blog/list").then((res) => {
-    //   this.articleList = res.data;
-    // });
+     requests.get(`/api/blog/list`).then(res=>{
+            this.articleList =res.data;
+      })
   },
 };
 </script>
@@ -121,6 +115,7 @@ export default {
   font-weight: 500;
   font-size: 24px;
   margin: 20px 0;
+  cursor: pointer;
 }
 .info .articleinfo {
   text-align: justify;
@@ -130,5 +125,9 @@ export default {
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   margin-bottom: 30px;
+  cursor: pointer;
+}
+.author{
+  cursor: pointer;
 }
 </style>
