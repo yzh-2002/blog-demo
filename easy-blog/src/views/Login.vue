@@ -6,10 +6,10 @@
         <div class="sign-in-form">
           <h2 class="title">Easy Blog</h2>
           <div class="input-field">
-            <input type="text" placeholder="Username" class="userInput" />
+            <input type="text" placeholder="Username" class="userInput" v-model="username"/>
           </div>
           <div class="input-field">
-            <input type="password" placeholder="Password" class="pswInput" />
+            <input type="password" placeholder="Password" class="pswInput" v-model="password"/>
           </div>
           <button class="btn" @click="Login">登录</button>
         </div>
@@ -34,7 +34,9 @@ export default {
         "username":this.username,
         "password":this.password
       }).then(data=>{
-        console.log(data);
+        if (data.errnum ==0){
+          this.$router.push({path:"/home"})
+        }
       })
     }
   },

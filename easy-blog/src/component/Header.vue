@@ -2,15 +2,16 @@
   <div class="header">
       <div class="logo">Easy Blog</div>
       <el-input v-model="input" placeholder="搜索文章" id="input"></el-input>
+      <el-button icon="el-icon-search" id="search" circle @click="searchArticle"></el-button>
       <el-menu 
-      :default-active="activeIndex" 
       class="el-menu-demo"
       id="menu" 
       mode="horizontal" 
       @select="handleSelect"
       >
-        <el-menu-item index="1">新建博客</el-menu-item>
-        <el-menu-item index="4">登出</el-menu-item>
+        <el-menu-item index="/home">首页</el-menu-item> 
+        <el-menu-item index="/release">新建博客</el-menu-item>
+        <el-menu-item index="/login">登出</el-menu-item>
     </el-menu>
   </div>
 </template>
@@ -26,8 +27,15 @@ export default {
     },
     methods:{
         // 点击跳转路由
-        handleSelect(){
-
+        handleSelect(key){
+            if (key.toString()!="/login"){
+                this.$router.push({path:key.toString()})
+            }
+            // 清除cookie（由于禁止js操作cookie，所以需要请求后端接口清楚redis中缓存的session）
+            // 接口还没写....
+        },
+        searchArticle(){
+            
         }
     }
 }
@@ -54,6 +62,12 @@ export default {
     right: 25%;
     transform: translateY(-20%);
     width: 10%;
+}
+#search{
+    position: absolute;
+    top: 50%;
+    right: 22.5%;
+    transform: translateY(-50%);
 }
 #menu{
     position: absolute;

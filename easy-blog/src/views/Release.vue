@@ -18,7 +18,7 @@
         </el-input>
       </div>
       <div class="releasebtn">
-        <el-button type="primary" round>发布文章</el-button>
+        <el-button type="primary" round @click="realseArticle">发布文章</el-button>
       </div>
     </div>
   </div>
@@ -26,6 +26,7 @@
 
 <script>
 import Header from "../component/Header.vue";
+import requests from "@/http/request.js"
 export default {
   name: "Release",
   data() {
@@ -34,7 +35,21 @@ export default {
       textarea: "",
     };
   },
-  methods: {},
+  methods: {
+    realseArticle(){
+      requests.post("/api/blog/new",{
+        "title":this.input,
+        "content":this.textarea
+      }).then(res=>{
+        if (res.errnum==0){
+          alert("创建文章成功!!")
+          this.$router.push("/home")
+        }else{
+           alert("创建文章失败!!");
+        }
+      })
+    }
+  },
   components: {
     Header,
   },

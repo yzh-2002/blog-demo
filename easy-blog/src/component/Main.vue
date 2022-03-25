@@ -5,10 +5,10 @@
       </div>
       <div class="article-list">
           <template v-for="article in articleList">
-              <div class="article" :key="article.title">
+              <div class="article" :key="article.title" @click="clickArticle">
                   <div class="title">{{article.title}}</div>
                   <div class="author">{{article.author}}</div>
-                  <div class="brief">{{article.brief}}</div>
+                  <div class="brief">{{article.content}}</div>
               </div>
           </template>
       </div>
@@ -25,10 +25,15 @@ export default {
             articleList:[]
         }
     },
+    methods:{
+        clickArticle(){
+            this.$router.push({path:"/detail"})
+        }
+    },
     created(){
         // 获取文章列表
-        requests.get("/api/blog/list").then(data=>{
-            articleList =data
+        requests.get("/api/blog/list").then(res=>{
+            this.articleList =res.data
         })
     }
 }

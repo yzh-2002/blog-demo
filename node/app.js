@@ -36,10 +36,6 @@ const getPostData =(req) =>{
 const serverHandle =(req,res) =>{
     // 记录access.log
     access(`${req.method} -- ${req.url} -- ${req.headers['user-agent']} -- ${Date.now()}`)
-
-
-
-
     // 设置返回格式
     res.setHeader("Content-type","application/json");
 
@@ -70,15 +66,18 @@ const serverHandle =(req,res) =>{
         needSetCookie =true;
         userId =`${Date.now()}_${Math.random()}`
         // 初始化redis中的值
-        set(userId,{})
+        set(userId,JSON.stringify({}))
     }
 
     // 获取session
     req.sessionId =userId;
     get(req.sessionId).then(sessionData=>{
+        // 先JSON解码
+        // sessionData =JSON.parse(sessionData)
+        console.log("sessionData:"+sessionData);
         if (sessionData==null){
             // 初始化redis中sessionId的值
-            set(req.sessionId,{})
+            set(req.sessionId,JSON.stringify({}))
             req.session ={}
         }else{
             // 设置session

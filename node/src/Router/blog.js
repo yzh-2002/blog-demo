@@ -5,6 +5,7 @@ const {SuccessModel,ErrorModel} =require("../model/resModel")
 const identifyCheck =(req)=>{
     if (!req.session.username){
         // username为唯一用户标识
+        console.log(req.session.username);
         return Promise.resolve(
             new ErrorModel("尚未登录")
         )

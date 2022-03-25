@@ -14,10 +14,10 @@ const handleUserRouter =(req,res)=>{
                 //    设置session
                 req.session.username =data.username;
                 req.session.realname =data.realname;
-                console.log(req.session.username);
                 // 同步到redis
-                set(req.sessionId,req.session)
-                console.log(req.session);
+                console.log("req.sessionId:"+req.sessionId);
+                console.log("req.session:"+req.session);
+                set(req.sessionId,JSON.stringify(req.session))
                return new SuccessModel()
            }
            return new ErrorModel("登录失败")
